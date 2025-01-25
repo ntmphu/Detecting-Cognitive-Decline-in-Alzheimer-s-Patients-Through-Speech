@@ -93,7 +93,10 @@ class AudioFeatureExtractor:
             self.process_audio_file()
         feature_vector = np.array(list(self.combined_features.values())).reshape(1, -1)
         prediction = self.model.predict(feature_vector)
-        return prediction
+        if prediction[0] == 1:
+            return "Yes"
+        else:
+            return "No"
 
 
 # Example Usage
